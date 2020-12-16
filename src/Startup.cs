@@ -31,9 +31,8 @@ namespace Hangfire_SQLite
             var appConfiguration = Configuration.GetSection(AppConfiguration.Section).Get<AppConfiguration>();
             var csvFileHandlerJobConfig = Configuration.GetSection(CsvFileHandlerJobConfig.Section).Get<CsvFileHandlerJobConfig>();
 
-            services.Configure<CsvFileHandlerJobConfig>(Configuration.GetSection(CsvFileHandlerJobConfig.Section));
-
-            services.AddScoped<ICsvFileHandlerManager, CsvFileHandlerManager>();
+            services.AddAppConfig(Configuration);
+            services.AddAppServices();
 
             services.AddHangfire(x =>
             {
@@ -57,8 +56,8 @@ namespace Hangfire_SQLite
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // by default the dashboard url is: http://localhost:4735/hangfire
-            // set parameter to string.Empty then the new url is:  http://localhost:4735/
+            // by default the dashboard url is: http://localhost:5003/hangfire
+            // set parameter to string.Empty then the new url is:  http://localhost:5003/
             app.UseHangfireDashboard(string.Empty);
         }
     }
