@@ -56,6 +56,16 @@ namespace Hangfire_SQLite
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
             // by default the dashboard url is: http://localhost:5003/hangfire
             // set parameter to string.Empty then the new url is:  http://localhost:5003/
             app.UseHangfireDashboard(string.Empty);
