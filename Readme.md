@@ -15,3 +15,19 @@ This is a simple template project that set up Hangfire with SQLite storage.
 # Future
 - [ ] Support SQLServer and MySQL storage (configurable in AppSettings)
 
+
+# Install as Windows Service
+
+## Publish the build
+```
+dotnet publish -r win-x64 -c Release
+```
+## Install Windows Service by sc.exe
+```
+sc create your_service_name BinPath=the_exe_path\Hangfire-SQLite.exe
+```
+## Remove Windows Service
+```
+sc delete your_service_name
+```
+
