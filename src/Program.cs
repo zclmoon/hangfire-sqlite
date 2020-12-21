@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
@@ -24,6 +25,18 @@ namespace Hangfire_SQLite
                 {
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseNLog();
+                })
+                .ConfigureHostConfiguration(configHost =>
+                {
+                   
+                })
+                .ConfigureServices((hostContext, services) => 
+                {
+                    services.Configure<HostOptions>(option => 
+                    {
+                        // Extend stop timeout, default is 5 seconds
+                        option.ShutdownTimeout = System.TimeSpan.FromSeconds(10);
+                    });
                 })
             .UseWindowsService();
     }
