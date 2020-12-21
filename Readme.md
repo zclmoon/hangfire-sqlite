@@ -7,10 +7,11 @@ This is a simple template project that set up Hangfire with SQLite storage.
 4. Hangfire.Storage.SQLite
 5. NLog.Web.AspNetCore
 6. Microsoft.Extensions.Hosting.WindowsServices
+7. CsvHelper
 
 # Planned Items
 - [x] Support Host Hangfire with Windows Service
-- [ ] Add CSV File handler sample with CsvHelper
+- [x] Add CSV File handler sample with CsvHelper
 - [ ] Add a sample that make Http Request in Scheduling Job
 
 # Future

@@ -9,5 +9,8 @@ namespace Hangfire_SQLite.Configuration
     {
         public const string Section = "CsvFileHandlerJobConfig";
         public string JobCron { get; set; }
+        public string CsvFileFolder { get; set; }
+        public string CsvFileDelimiter { get; set; }
+        public string CsvFileSuffix { get; set; }
     }
 }
